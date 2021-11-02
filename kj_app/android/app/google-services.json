@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "808577219802",
+    "project_id": "kjapp-4f2d1",
+    "storage_bucket": "kjapp-4f2d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808577219802:android:d93e2bb5a8b02c200af9e3",
+        "android_client_info": {
+          "package_name": "com.globaldesign.kjapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808577219802-sb5quolpdajffsbnql7c64ks5q76l9df.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.globaldesign.kjapp",
+            "certificate_hash": "bfeec37b0962cf4574c377fc5b4b3214cf2513ed"
+          }
+        },
+        {
+          "client_id": "808577219802-uk3ev9ci47r2g9hcm6cbda4lu5o02sjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDat2BJ6HgEokDcLrqGYPkxii0zTqIWXOQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808577219802-uk3ev9ci47r2g9hcm6cbda4lu5o02sjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
