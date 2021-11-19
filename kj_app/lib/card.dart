@@ -65,228 +65,220 @@ class _CardDesignState extends State<CardDesign> {
           child: RepaintBoundary(
             key: previewContainer,
             child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 2.3,
+                // width: MediaQuery.of(context).size.width,
+                // height: MediaQuery.of(context).size.height * 2.3,
                 decoration: BoxDecoration(color: Colors.white),
                 child: Stack(
                   children: [
                     Container(
-                      child: Expanded(
-                        child: GestureDetector(
-                          child: Stack(
-                            children: [
-                              Container(
-                                  child: GestureDetector(
-                                      child: Row(
+                      child: Positioned(
+                        // child: GestureDetector(
+                        child: Stack(
+                          children: [
+                            Container(
+                                child: GestureDetector(
+                                    child: Row(
+                              children: [
+                                // Positioned(
+                                //   child: IconButton(
+                                //     icon: Icon(Icons.home),
+                                //     iconSize: 32,
+                                //     alignment: Alignment.center,
+                                //     onPressed: () {
+                                //       Navigator.push(
+                                //         context,
+                                //         MaterialPageRoute(
+                                //             builder: (context) => Uploader()),
+                                //       );
+                                //     },
+                                //   ),
+                                // ),
+                                IconButton(
+                                    icon: Icon(
+                                      (click == false)
+                                          ? Icons.thumb_up_sharp
+                                          : Icons.thumb_down,
+                                    ),
+                                    iconSize: 30,
+                                    alignment: Alignment.center,
+                                    color: Colors.black,
+                                    onPressed: () => {
+                                          setState(() {
+                                            click = !click;
+                                          })
+                                        }),
+
+                                IconButton(
+                                  icon: Icon(Icons.download),
+                                  iconSize: 32,
+                                  alignment: Alignment.center,
+                                  onPressed: _captureSocialPng,
+                                ),
+                              ],
+                            ))),
+                            Container(
+                              // width: MediaQuery.of(context).size.width,
+                              // height: MediaQuery.of(context).size.height,
+                              margin: EdgeInsets.only(
+                                  top:
+                                      MediaQuery.of(context).size.height * 0.06,
+                                  left: 30,
+                                  right: 30),
+                              decoration: BoxDecoration(color: Colors.white),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  // Positioned(
-                                  //   child: IconButton(
-                                  //     icon: Icon(Icons.home),
-                                  //     iconSize: 32,
-                                  //     alignment: Alignment.center,
-                                  //     onPressed: () {
-                                  //       Navigator.push(
-                                  //         context,
-                                  //         MaterialPageRoute(
-                                  //             builder: (context) => Uploader()),
-                                  //       );
-                                  //     },
-                                  //   ),
-                                  // ),
-                                  Positioned(
-                                    child: IconButton(
-                                        icon: Icon(
-                                          (click == false)
-                                              ? Icons.thumb_up_sharp
-                                              : Icons.thumb_down,
-                                        ),
-                                        iconSize: 30,
-                                        alignment: Alignment.center,
-                                        color: Colors.black,
-                                        onPressed: () => {
-                                              setState(() {
-                                                click = !click;
-                                              })
-                                            }),
-                                  ),
-                                  Positioned(
-                                    child: IconButton(
-                                      icon: Icon(Icons.download),
-                                      iconSize: 32,
-                                      alignment: Alignment.center,
-                                      onPressed: _captureSocialPng,
-                                    ),
-                                  ),
-                                ],
-                              ))),
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height,
-                                margin: EdgeInsets.only(
-                                    top: MediaQuery.of(context).size.height *
-                                        0.06,
-                                    left: 30,
-                                    right: 30),
-                                decoration: BoxDecoration(color: Colors.white),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Spacer(),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Spacer(),
 
-                                        Text(
-                                          UserName,
-                                          style: TextStyle(
-                                              fontFamily: "ProximaNova-Regular",
-                                              fontSize: 16,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400),
-                                        ),
+                                      Text(
+                                        UserName,
+                                        style: TextStyle(
+                                            fontFamily: "ProximaNova-Regular",
+                                            fontSize: 16,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400),
+                                      ),
 
-                                        Spacer(),
-                                        // Icon(
-                                        //   FontAwesomeIcons.facebookMessenger,
-                                        //   size: 24,
-                                        //   color: Colors.black,
-                                        // ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(20)),
-                                      child: Expanded(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                width: 5,
-                                                color: (click == false)
-                                                    ? Colors.orange.shade400
-                                                    : Colors.purple.shade400,
-                                                // color: Colors.orange.shade400,
-                                              ),
-                                              image: DecorationImage(
-                                                //  image: Image.asset('images/cat.png'),
-                                                image: Image.memory(
-                                                        base64Decode(
-                                                            widget.img_string))
-                                                    .image,
-                                              )),
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.7,
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.92,
-                                          child: Stack(
-                                            children: [
-                                              Positioned(
-                                                  right: 0,
-                                                  bottom: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.02,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.only(
-                                                            topLeft: Radius
-                                                                .circular(25),
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    25)),
-                                                    child: Container(
+                                      // Spacer(),
+                                      // Icon(
+                                      //   FontAwesomeIcons.facebookMessenger,
+                                      //   size: 24,
+                                      //   color: Colors.black,
+                                      // ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    child: Container(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                              width: 5,
+                                              color: (click == false)
+                                                  ? Colors.orange.shade400
+                                                  : Colors.purple.shade400,
+                                              // color: Colors.orange.shade400,
+                                            ),
+                                            image: DecorationImage(
+                                              //  image: Image.asset('images/cat.png'),
+                                              image: Image.memory(base64Decode(
+                                                      widget.img_string))
+                                                  .image,
+                                            )),
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.7,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.92,
+                                        child: Stack(
+                                          children: [
+                                            Positioned(
+                                                right: 0,
+                                                bottom: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    0.02,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  25),
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  25)),
+                                                  child: Container(
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width *
+                                                              0.8,
+                                                      height: 150,
+                                                      decoration: BoxDecoration(
+                                                          // color: Color(0xFFFFFFF)
+                                                          color: Colors.black
+                                                              .withOpacity(
+                                                                  0.5)),
+                                                      child: Container(
+                                                        margin:
+                                                            EdgeInsets.all(22),
                                                         width: MediaQuery.of(
                                                                     context)
                                                                 .size
                                                                 .width *
-                                                            0.8,
-                                                        height: 150,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                // color: Color(0xFFFFFFF)
-                                                                color: Colors
-                                                                    .black
-                                                                    .withOpacity(
-                                                                        0.5)),
-                                                        child: Container(
-                                                          margin:
-                                                              EdgeInsets.all(
-                                                                  22),
-                                                          width: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .width *
-                                                              0.7,
-                                                          child: Column(
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .start,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                widget
-                                                                    .description,
-                                                                style: TextStyle(
-                                                                    fontFamily:
-                                                                        "Proxima-Nova-Extrabold",
-                                                                    fontSize:
-                                                                        15,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600),
-                                                              ),
-                                                              SizedBox(
-                                                                height: 10,
-                                                              ),
-                                                              Text(
-                                                                widget.location,
-                                                                style: TextStyle(
-                                                                    fontFamily:
-                                                                        "ProximaNova-Regular",
-                                                                    fontSize:
-                                                                        12,
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        )),
-                                                  ))
-                                            ],
-                                          ),
+                                                            0.7,
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              widget
+                                                                  .description,
+                                                              style: TextStyle(
+                                                                  fontFamily:
+                                                                      "Proxima-Nova-Extrabold",
+                                                                  fontSize: 15,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                            ),
+                                                            SizedBox(
+                                                              height: 10,
+                                                            ),
+                                                            Text(
+                                                              widget.location,
+                                                              style: TextStyle(
+                                                                  fontFamily:
+                                                                      "ProximaNova-Regular",
+                                                                  fontSize: 12,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      )),
+                                                ))
+                                          ],
                                         ),
                                       ),
-                                    )
-                                  ],
-                                ),
+                                    ),
+                                  )
+                                ],
                               ),
-                            ],
-                          ),
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           builder: (context) => FinalStage()));
-                          // },
+                            ),
+                          ],
                         ),
+                        // onTap: () {
+                        //   Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(
+                        //           builder: (context) => FinalStage()));
+                        // },
+                        // ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 100,
                     ),
                     SizedBox(
                       height: 100,

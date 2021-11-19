@@ -1,3 +1,4 @@
+import 'package:kjapp/animated_screen.dart';
 import 'package:kjapp/main_page.dart';
 import 'package:kjapp/home_page.dart';
 import 'package:kjapp/userprofile.dart';
@@ -6,6 +7,7 @@ import 'package:kjapp/controllers/login_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,6 +18,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   GlobalKey _NavKey = GlobalKey();
+
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
   //   var myindex = 0;
   var PagesAll = [
@@ -28,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: loginUI(),
     );
   }
@@ -41,107 +46,141 @@ class _LoginPageState extends State<LoginPage> {
         return Scaffold(
           body: SafeArea(
             child: Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(00, 50, 0, 40),
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: 0.0, top: 50.0, right: 0.0, bottom: 0.0),
-                        width: 200,
-                        height: 200,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            'assets/google_tra.png',
-                            fit: BoxFit.contain,
+              child: Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.orange.shade400, Colors.blue])),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(00, 50, 0, 40),
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: 0.0, top: 50.0, right: 0.0, bottom: 0.0),
+                          width: 200,
+                          height: 200,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'assets/ourlogo2.png',
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.fromLTRB(00, 0, 0, 0),
-                        child: SizedBox(
-                          width: 250.0,
-                          height: 50,
-                          child: DefaultTextStyle(
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 32.0,
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(00, 0, 0, 0),
+                          child: SizedBox(
+                            width: 250.0,
+                            height: 50,
+                            child: DefaultTextStyle(
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 32.0,
+                              ),
+                              child: AnimatedTextKit(
+                                repeatForever: true,
+                                isRepeatingAnimation: true,
+                                animatedTexts: [
+                                  RotateAnimatedText(' Hello！'),
+                                  RotateAnimatedText('こんにちは！'),
+                                  RotateAnimatedText('여보! '),
+                                  RotateAnimatedText('你好！'),
+                                ],
+                              ),
                             ),
-                            child: AnimatedTextKit(
-                              repeatForever: true,
-                              isRepeatingAnimation: true,
-                              animatedTexts: [
-                                RotateAnimatedText(' Hello！'),
-                                RotateAnimatedText('こんにちは！'),
-                                RotateAnimatedText('여보! '),
-                                RotateAnimatedText('你好！'),
-                              ],
-                            ),
-                          ),
-                        )),
-                    Padding(
-                        padding: EdgeInsets.fromLTRB(00, 0, 0, 0),
-                        child: SizedBox(
-                          width: 250.0,
-                          height: 20,
-                          child: DefaultTextStyle(
-                            style: const TextStyle(
-                              color: Colors.black45,
-                              fontSize: 12.0,
-                            ),
-                            child: AnimatedTextKit(
-                              repeatForever: true,
-                              isRepeatingAnimation: true,
-                              animatedTexts: [
-                                // FadeAnimatedText('do IT!'),
-                                // FadeAnimatedText('do it RIGHT!!'),
-                                // FadeAnimatedText('do it RIGHT NOW!!!'),
-                                // RotateAnimatedText('Hello!'),
-                                RotateAnimatedText(
-                                    'Welcome to KJ Application.'),
-                                RotateAnimatedText('KJアプリケーションへようこそ。'),
-                                RotateAnimatedText('KJ 앱에 오신 것을 환영합니다. '),
-                                RotateAnimatedText('欢迎使用 KJ 应用程序。'),
-                              ],
-                              // onTap: () {
-                              //   print("Tap Event");
-                              // },
-                            ),
-                          ),
-                        )),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(00, 50, 00, 20),
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: 0.0, top: 20.0, right: 0.0, bottom: 0.0),
-                        child: loginControllers(context),
-                      ), //Container
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: 0.0, top: 60.0, right: 0.0, bottom: 0.0),
-                        width: 70,
-                        height: 70,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Image.asset(
-                            'assets/globaldesign.png',
-                            fit: BoxFit.contain,
-                          ),
-                        ),
+                          )),
 
-                        // child: Image.asset(
-                        //   'assets/google_tra.png',
-                        //   fit: BoxFit.contain,
-                        // ),
-                      ), //Container
-                    ),
-                  ]),
+                      Padding(
+                          padding: EdgeInsets.fromLTRB(00, 0, 0, 0),
+                          child: SizedBox(
+                            width: 250.0,
+                            height: 20,
+                            child: DefaultTextStyle(
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.0,
+                              ),
+                              child: AnimatedTextKit(
+                                repeatForever: true,
+                                isRepeatingAnimation: true,
+                                animatedTexts: [
+                                  // FadeAnimatedText('do IT!'),
+                                  // FadeAnimatedText('do it RIGHT!!'),
+                                  // FadeAnimatedText('do it RIGHT NOW!!!'),
+                                  // RotateAnimatedText('Hello!'),
+                                  RotateAnimatedText(
+                                      'Welcome to KJ Application.'),
+                                  RotateAnimatedText('KJアプリケーションへようこそ。'),
+                                  RotateAnimatedText('KJ 앱에 오신 것을 환영합니다. '),
+                                  RotateAnimatedText('欢迎使用 KJ 应用程序。'),
+                                ],
+                                // onTap: () {
+                                //   print("Tap Event");
+                                // },
+                              ),
+                            ),
+                          )),
+
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(00, 50, 00, 20),
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: 0.0, top: 20.0, right: 0.0, bottom: 0.0),
+                          child: loginControllers(context),
+                        ), //Container
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Container(
+                      //       child: RoundedLoadingButton(
+                      //           child: Text('Make a Tour',
+                      //               style: TextStyle(color: Colors.black)),
+                      //           controller: _btnController,
+                      //           onPressed: () => {
+                      //                 Navigator.of(context).push(
+                      //                     MaterialPageRoute(
+                      //                         builder: (context) =>
+                      //                             AnimatedScreen())),
+                      //               })),
+                      //   // child: Container(
+                      //   //   decoration: BoxDecoration(
+                      //   //     shape: BoxShape.circle,
+                      //   //     color: Colors.black,
+                      //   //   ),
+                      //   //   child: Icon(
+                      //   //     Icons.arrow_right,
+                      //   //     color: Colors.white,
+
+                      //   //   ),
+                      //   // ),
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: 0.0, top: 60.0, right: 0.0, bottom: 0.0),
+                          width: 70,
+                          height: 70,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Image.asset(
+                              'assets/globaldesign.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+
+                          // child: Image.asset(
+                          //   'assets/google_tra.png',
+                          //   fit: BoxFit.contain,
+                          // ),
+                        ), //Container
+                      ),
+                    ]),
+              ),
             ),
           ),
         );
@@ -208,7 +247,7 @@ class _LoginPageState extends State<LoginPage> {
         DefaultTextStyle(
           style: const TextStyle(
             fontSize: 25,
-            color: Colors.black,
+            color: Colors.white,
           ),
           child: AnimatedTextKit(
               repeatForever: true,
@@ -237,15 +276,17 @@ class _LoginPageState extends State<LoginPage> {
             },
             icon: Image.asset(
               "assets/google_tra.png",
-              height: 32,
-              width: 32,
+              height: 30,
+              width: 30,
             ),
             label: Text("   Sign in with Google  "),
             backgroundColor: Colors.white,
-            foregroundColor: Colors.black38,
+            foregroundColor: Colors.black54,
             shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.black54, width: 1.0),
-                borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              side: BorderSide(color: Colors.black54, width: 1.0),
+              borderRadius: BorderRadius.all(Radius.circular(80.0)),
+              // borderRadius: BorderRadius.all(Radius.circular(10.0))
+            ),
           )),
 
           SizedBox(
@@ -259,15 +300,17 @@ class _LoginPageState extends State<LoginPage> {
             },
             icon: Image.asset(
               "assets/facebook_tra.png",
-              height: 32,
-              width: 32,
+              height: 30,
+              width: 30,
             ),
             label: Text("Sign in with Facebook"),
             backgroundColor: Colors.white,
-            foregroundColor: Colors.black38,
+            foregroundColor: Colors.black54,
             shape: RoundedRectangleBorder(
-                side: BorderSide(color: Colors.black54, width: 1.0),
-                borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              side: BorderSide(color: Colors.black54, width: 1.0),
+              // borderRadius: BorderRadius.all(Radius.circular(10.0))
+              borderRadius: BorderRadius.all(Radius.circular(80.0)),
+            ),
           )),
           // onTap: () {
           //   Provider.of<LoginController>(context, listen: false)

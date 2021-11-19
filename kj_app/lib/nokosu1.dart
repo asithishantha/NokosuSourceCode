@@ -150,12 +150,12 @@ class _NokosuState extends State<Nokosu> {
               child: Column(
                 children: [
                   buildCard(model, context),
-                  // buildCard(model, context),
-                  // buildCard(model, context),
-                  // buildCard(model, context),
-                  // buildCard(model, context),
-                  // buildCard(model, context),
-                  // buildCard(model, context),
+                  buildCard(model, context),
+                  buildCard(model, context),
+                  buildCard(model, context),
+                  buildCard(model, context),
+                  buildCard(model, context),
+                  buildCard(model, context),
                 ],
               )),
         ));
@@ -170,95 +170,79 @@ class _NokosuState extends State<Nokosu> {
     var supportingText = widget.description;
 
     return Card(
-    
-      color: Colors.white,
       elevation: 4.0,
       child: RepaintBoundary(
         key: previewContainer,
-        child: Container(
-           decoration: BoxDecoration(color: Colors.white),
-          child: Column(
-            children: [
-              // ListTile(
-              //   title: showCondition(),
-              //   subtitle: PostiveNegative(),
-              //   // trailing: Icon(Icons.favorite_outline),
-              //   // trailing: showCondition(),
-              // ),
-              Container(
-                height: 50.0,
-                child: Row(
-                  children: [
-                    PostiveNegative(),
-                    showCondition(),
-                    // Positioned(
-                    //   right: 2,
-                    //   child: Text(UserName1,
-                    //       style: const TextStyle(color: Colors.black)),
-                    // ),
-                    IconButton(
-                      icon: Icon(Icons.download),
-                      iconSize: 20,
-                      alignment: Alignment.centerRight,
-                      onPressed: _captureSocialPng1,
-                    ),
-                    Text(UserName1, style: const TextStyle(color: Colors.black)),
-                  ],
-                ),
+        child: Column(
+          children: [
+            // ListTile(
+            //   title: showCondition(),
+            //   subtitle: PostiveNegative(),
+            //   // trailing: Icon(Icons.favorite_outline),
+            //   // trailing: showCondition(),
+            // ),
+            Container(
+              height: 50.0,
+              child: Row(
+                children: [
+                  PostiveNegative(),
+                  showCondition(),
+                  Positioned(
+                    right: 2,
+                    child: Text(UserName1,
+                        style: const TextStyle(color: Colors.black)),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.download),
+                    iconSize: 20,
+                    alignment: Alignment.centerRight,
+                    onPressed: _captureSocialPng1,
+                  ),
+                ],
               ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.5,
-                width: MediaQuery.of(context).size.width * 0.8,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      width: 5,
-                      color: Colors.white,
-                      // color: Colors.orange.shade400,
-                    ),
-                    image: DecorationImage(
-                      //  image: Image.asset('images/cat.png'),
-                      image: Image.memory(base64Decode(widget.img_string)).image,
-                    )),
-                // child: Ink.image(
-                //   // image: cardImage,
-        
-                //   image: Image.memory(base64Decode(widget.img_string)).image,
-        
-                //   fit: BoxFit.cover,
-                // ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.5,
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Ink.image(
+                // image: cardImage,
+
+                image: Image.memory(base64Decode(widget.img_string)).image,
+
+                fit: BoxFit.cover,
               ),
-              Container(
-                padding: EdgeInsets.all(16.0),
-                alignment: Alignment.centerLeft,
-                child: Text(supportingText),
-              ),
-              Container(
-                padding: EdgeInsets.all(16.0),
-                alignment: Alignment.centerLeft,
-                child: Text(widget.location),
-              ),
-              // ButtonBar(
-              //     // children: [
-              //     //   TextButton(
-              //     //     child: const Text('CONTACT AGENT'),
-              //     //     onPressed: () {/* ... */},
-              //     //   ),
-              //     //   TextButton(
-              //     //     child: const Text('LEARN MORE'),
-              //     //     onPressed: () {/* ... */},
-              //     //   )
-              //     // ],
-              //     ),
-              // Positioned(
-              //   child: IconButton(
-              //     icon: Icon(Icons.download),
-              //     iconSize: 32,
-              //     alignment: Alignment.center,
-              //     onPressed: _captureSocialPng1,
-              //   ),
-              // ),
-            ],
-          ),
+            ),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.centerLeft,
+              child: Text(supportingText),
+            ),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.centerLeft,
+              child: Text(widget.location),
+            ),
+            // ButtonBar(
+            //     // children: [
+            //     //   TextButton(
+            //     //     child: const Text('CONTACT AGENT'),
+            //     //     onPressed: () {/* ... */},
+            //     //   ),
+            //     //   TextButton(
+            //     //     child: const Text('LEARN MORE'),
+            //     //     onPressed: () {/* ... */},
+            //     //   )
+            //     // ],
+            //     ),
+            // Positioned(
+            //   child: IconButton(
+            //     icon: Icon(Icons.download),
+            //     iconSize: 32,
+            //     alignment: Alignment.center,
+            //     onPressed: _captureSocialPng1,
+            //   ),
+            // ),
+          ],
         ),
       ),
     );

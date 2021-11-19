@@ -124,7 +124,7 @@ class _HomePageState extends State {
                 child: Container(
                   alignment: Alignment.bottomLeft,
                   child: Text(
-                    "KJ Application",
+                    " NOKOSU ",
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.white,
@@ -200,7 +200,7 @@ class _HomePageState extends State {
                   color: Theme.of(context).accentColor,
                 ),
                 title: Text(
-                  'Create KJ card',
+                  'Create KJ法/Nokosu card',
                   style: TextStyle(
                       fontSize: _drawerFontSize,
                       color: Theme.of(context).accentColor),

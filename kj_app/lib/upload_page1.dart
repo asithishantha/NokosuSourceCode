@@ -107,8 +107,16 @@ class _Uploader extends State<Uploader> {
             ),
 
             actions: <Widget>[
-              Container(
-                  child: ElevatedButton(
+              FlatButton(
+                  onPressed: () => ShowDialog(context),
+                  child: Text(
+                    "KJ 法",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12.0),
+                  )),
+              ElevatedButton(
                 child: Text("Nokosu".toUpperCase(),
                     style: TextStyle(fontSize: 12)),
                 style: ButtonStyle(
@@ -122,7 +130,7 @@ class _Uploader extends State<Uploader> {
                   //         side: BorderSide(color: Colors.green)))
                 ),
                 onPressed: () => ShowDialog(context),
-              )),
+              ),
               FlatButton(
                   onPressed: postImage,
                   child: Text(
@@ -165,24 +173,7 @@ class _Uploader extends State<Uploader> {
               Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  // Container(
-                  //     child: ElevatedButton(
-                  //   child: Text("Done".toUpperCase(),
-                  //       style: TextStyle(fontSize: 14)),
-                  //   style: ButtonStyle(
-                  //       foregroundColor:
-                  //           MaterialStateProperty.all<Color>(Colors.white),
-                  //       backgroundColor:
-                  //           MaterialStateProperty.all<Color>(Colors.green),
-                  //       shape:
-                  //           MaterialStateProperty.all<RoundedRectangleBorder>(
-                  //               RoundedRectangleBorder(
-                  //                   borderRadius: BorderRadius.zero,
-                  //                   side: BorderSide(color: Colors.green)))),
-                  //   onPressed: () => ShowDialog(context),
-                  // ))
-                ],
+                children: <Widget>[],
               ),
             ],
           ));
@@ -258,190 +249,188 @@ class _Uploader extends State<Uploader> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: 350,
-                width: 300,
-                child: SizedBox.expand(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        //Use of SizedBox
-                        height: 30,
-                      ),
-                      LiteRollingSwitch(
-                        value: true,
-                        textOn: 'Positive',
-                        textOff: 'Negative',
-                        colorOn: Colors.orangeAccent,
-                        colorOff: Colors.purpleAccent,
-                        iconOn: Icons.thumb_up_sharp,
-                        iconOff: Icons.thumb_down,
-                        textSize: 8,
-                        onChanged: (bool postiion) {
-                          Position = postiion;
-                          print("the button is $postiion ");
-                        },
-                      ),
-                      SizedBox(
-                        //Use of SizedBox
-                        height: 20,
-                      ),
-                      Container(
-                        child: Text(
-                          "Select the most appropriate category.",
-                          style: TextStyle(
-                            fontSize: 8.0,
-                            color: Colors.black,
-                          ),
+                // height: 350,
+                // width: 300,
+                // child: SizedBox.expand(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      //Use of SizedBox
+                      height: 30,
+                    ),
+                    LiteRollingSwitch(
+                      value: true,
+                      textOn: 'Positive',
+                      textOff: 'Negative',
+                      colorOn: Colors.orangeAccent,
+                      colorOff: Colors.purpleAccent,
+                      iconOn: Icons.thumb_up_sharp,
+                      iconOff: Icons.thumb_down,
+                      textSize: 8,
+                      onChanged: (bool postiion) {
+                        Position = postiion;
+                        print("the button is $postiion ");
+                      },
+                    ),
+                    // SizedBox(
+                    //   //Use of SizedBox
+                    //   height: 20,
+                    // ),
+                    Container(
+                      child: Text(
+                        "Select the most appropriate category.",
+                        style: TextStyle(
+                          fontSize: 8.0,
+                          color: Colors.black,
                         ),
                       ),
-                      SizedBox(
-                        //Use of SizedBox
-                        height: 20,
-                      ),
-                      DefaultTabController(
-                          length: 3,
-                          child: Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Material(
-                                    color: Colors.white,
-                                    child: TabBar(
-                                      unselectedLabelColor: Colors.black,
-                                      indicatorSize: TabBarIndicatorSize.tab,
-                                      indicator: BoxDecoration(
-                                          gradient: LinearGradient(colors: [
-                                            Colors.green,
-                                            Colors.blue
-                                          ]),
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          color: Colors.redAccent),
-                                      tabs: [
-                                        Tab(
-                                          icon: ImageIcon(
-                                            AssetImage(
-                                                "assets/emotionally-stable.png"),
-                                            color: Colors.pink.shade100,
-                                          ),
-                                        ),
-                                        Tab(
-                                          icon: ImageIcon(
-                                            AssetImage("assets/solid.png"),
-                                            color: Colors.blue.shade200,
-                                          ),
-                                        ),
-                                        Tab(
-                                          icon: ImageIcon(
-                                            AssetImage("assets/cultures.png"),
-                                            color: Colors.yellow.shade700,
-                                          ),
-                                        ),
-                                      ],
-                                    )),
-                                SizedBox(
-                                  //Use of SizedBox
-                                  height: 30,
-                                ),
-                                Expanded(
-                                  flex: 5,
-                                  child: TabBarView(
-                                    children: [
-                                      Center(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Text(
-                                                "Emotional",
-                                                style: TextStyle(
-                                                    fontSize: 12.0,
-                                                    color: Colors.black),
-                                              ),
-                                              alignment: Alignment.center,
-                                            ),
-                                            SizedBox(
-                                              //Use of SizedBox
-                                              height: 20,
-                                            ),
-                                            Container(
-                                                child: RoundedLoadingButton(
-                                              child: Text('Done',
-                                                  style: TextStyle(
-                                                      color: Colors.white)),
-                                              controller: _btnController,
-                                              onPressed: () => _doSomething1(
-                                                  "Emotional", Position),
-                                            )),
-                                          ],
+                    ),
+                    // SizedBox(
+                    //   //Use of SizedBox
+                    //   height: 20,
+                    // ),
+                    DefaultTabController(
+                        length: 3,
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Material(
+                                  color: Colors.white,
+                                  child: TabBar(
+                                    unselectedLabelColor: Colors.black,
+                                    indicatorSize: TabBarIndicatorSize.tab,
+                                    indicator: BoxDecoration(
+                                        gradient: LinearGradient(colors: [
+                                          Colors.green,
+                                          Colors.blue
+                                        ]),
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: Colors.redAccent),
+                                    tabs: [
+                                      Tab(
+                                        icon: ImageIcon(
+                                          AssetImage(
+                                              "assets/emotionally-stable.png"),
+                                          color: Colors.pink.shade100,
                                         ),
                                       ),
-                                      // Icon(Icons.directions_car),
-                                      Center(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Text(
-                                                "Physical",
-                                                style: TextStyle(
-                                                    fontSize: 12.0,
-                                                    color: Colors.black),
-                                              ),
-                                              alignment: Alignment.center,
-                                            ),
-                                            SizedBox(
-                                              //Use of SizedBox
-                                              height: 20,
-                                            ),
-                                            Container(
-                                                child: RoundedLoadingButton(
-                                              child: Text('Done',
-                                                  style: TextStyle(
-                                                      color: Colors.white)),
-                                              controller: _btnController,
-                                              onPressed: () => _doSomething2(
-                                                  "Physical", Position),
-                                            )),
-                                          ],
+                                      Tab(
+                                        icon: ImageIcon(
+                                          AssetImage("assets/solid.png"),
+                                          color: Colors.blue.shade200,
                                         ),
                                       ),
-                                      Center(
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Text(
-                                                "Cultural",
-                                                style: TextStyle(
-                                                    fontSize: 12.0,
-                                                    color: Colors.black),
-                                              ),
-                                              alignment: Alignment.center,
-                                            ),
-                                            SizedBox(
-                                              //Use of SizedBox
-                                              height: 20,
-                                            ),
-                                            Container(
-                                                child: RoundedLoadingButton(
-                                              child: Text('Done',
-                                                  style: TextStyle(
-                                                      color: Colors.white)),
-                                              controller: _btnController,
-                                              onPressed: () => _doSomething3(
-                                                  "Cultural", Position),
-                                            )),
-                                          ],
+                                      Tab(
+                                        icon: ImageIcon(
+                                          AssetImage("assets/cultures.png"),
+                                          color: Colors.yellow.shade700,
                                         ),
                                       ),
                                     ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ))
-                    ],
-                  ),
+                                  )),
+                              SizedBox(
+                                //Use of SizedBox
+                                height: 30,
+                              ),
+                              Container(
+                                // flex: 5,
+                                child: TabBarView(
+                                  children: [
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              "Emotional",
+                                              style: TextStyle(
+                                                  fontSize: 12.0,
+                                                  color: Colors.black),
+                                            ),
+                                            alignment: Alignment.center,
+                                          ),
+                                          SizedBox(
+                                            //Use of SizedBox
+                                            height: 20,
+                                          ),
+                                          RoundedLoadingButton(
+                                            child: Text('Done',
+                                                style: TextStyle(
+                                                    color: Colors.white)),
+                                            controller: _btnController,
+                                            onPressed: () => _doSomething1(
+                                                "Emotional", Position),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    // Icon(Icons.directions_car),
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              "Physical",
+                                              style: TextStyle(
+                                                  fontSize: 12.0,
+                                                  color: Colors.black),
+                                            ),
+                                            alignment: Alignment.center,
+                                          ),
+                                          SizedBox(
+                                            //Use of SizedBox
+                                            height: 20,
+                                          ),
+                                          Container(
+                                              child: RoundedLoadingButton(
+                                            child: Text('Done',
+                                                style: TextStyle(
+                                                    color: Colors.white)),
+                                            controller: _btnController,
+                                            onPressed: () => _doSomething2(
+                                                "Physical", Position),
+                                          )),
+                                        ],
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            child: Text(
+                                              "Cultural",
+                                              style: TextStyle(
+                                                  fontSize: 12.0,
+                                                  color: Colors.black),
+                                            ),
+                                            alignment: Alignment.center,
+                                          ),
+                                          SizedBox(
+                                            //Use of SizedBox
+                                            height: 20,
+                                          ),
+                                          Container(
+                                              child: RoundedLoadingButton(
+                                            child: Text('Done',
+                                                style: TextStyle(
+                                                    color: Colors.white)),
+                                            controller: _btnController,
+                                            onPressed: () => _doSomething3(
+                                                "Cultural", Position),
+                                          )),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ))
+                  ],
                 ),
+                // ),
                 margin:
                     EdgeInsets.only(top: 50, bottom: 50, left: 12, right: 12),
                 decoration: BoxDecoration(
@@ -465,7 +454,7 @@ class _Uploader extends State<Uploader> {
   void _doSomething3(String text, bool boolVal) async {
     String base64String = base64Encode(file!.readAsBytesSync());
 
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(seconds: 3), () {
       _btnController.success();
     });
     final String img_string = base64String;
@@ -545,43 +534,50 @@ class _Uploader extends State<Uploader> {
       barrierDismissible: false, // user must tap button!
 
       builder: (BuildContext context) {
-        return SimpleDialog(
-          // backgroundColor: Colors.green.shade200,
-          title: const Text('Create a KJ card'),
-          children: <Widget>[
-            SimpleDialogOption(
-                child: const Text('Take a photo'),
-                onPressed: () async {
+        return Container(
+          // decoration: BoxDecoration(
+          //     gradient: LinearGradient
+          //         begin: Alignment.topLeft,
+          //         end: Alignment.bottomRight,
+          //         colors: [Colors.orange.shade400, Colors.blue])),
+          child: SimpleDialog(
+            // backgroundColor: Colors.green.shade200,
+            title: const Text('Create a Nokosu/KJ 法 card'),
+            children: <Widget>[
+              SimpleDialogOption(
+                  child: const Text('Take a photo'),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    PickedFile? imageFile = await imagePicker.getImage(
+                        source: ImageSource.camera,
+                        maxWidth: 1920,
+                        maxHeight: 1200,
+                        imageQuality: 80);
+                    setState(() {
+                      file = File(imageFile!.path);
+                    });
+                  }),
+              SimpleDialogOption(
+                  child: const Text('Choose from Gallery'),
+                  onPressed: () async {
+                    Navigator.of(context).pop();
+                    PickedFile? imageFile = await imagePicker.getImage(
+                        source: ImageSource.gallery,
+                        maxWidth: 1920,
+                        maxHeight: 1200,
+                        imageQuality: 80);
+                    setState(() {
+                      file = File(imageFile!.path);
+                    });
+                  }),
+              SimpleDialogOption(
+                child: const Text("Cancel"),
+                onPressed: () {
                   Navigator.pop(context);
-                  PickedFile? imageFile = await imagePicker.getImage(
-                      source: ImageSource.camera,
-                      maxWidth: 1920,
-                      maxHeight: 1200,
-                      imageQuality: 80);
-                  setState(() {
-                    file = File(imageFile!.path);
-                  });
-                }),
-            SimpleDialogOption(
-                child: const Text('Choose from Gallery'),
-                onPressed: () async {
-                  Navigator.of(context).pop();
-                  PickedFile? imageFile = await imagePicker.getImage(
-                      source: ImageSource.gallery,
-                      maxWidth: 1920,
-                      maxHeight: 1200,
-                      imageQuality: 80);
-                  setState(() {
-                    file = File(imageFile!.path);
-                  });
-                }),
-            SimpleDialogOption(
-              child: const Text("Cancel"),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ],
+                },
+              )
+            ],
+          ),
         );
       },
     );

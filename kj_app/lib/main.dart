@@ -1,6 +1,7 @@
 // @dart=2.9
 
 import 'package:flutter/material.dart';
+import 'package:kjapp/animated_screen.dart';
 import 'package:kjapp/controllers/login_controller.dart';
 import 'package:kjapp/login_page.dart';
 import 'package:kjapp/main_page.dart';
@@ -27,15 +28,23 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
 
-        home: AnimatedSplashScreen(
-          splash: Lottie.asset(
-            'assets/74423-photography.json',
+        home: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.green.shade400, Colors.blue.shade400])),
+          child: AnimatedSplashScreen(
+            splash: Lottie.asset(
+              'assets/74423-photography.json',
+            ),
+            nextScreen: AnimatedScreen(),
+            // nextScreen: LoginPage(),
+            splashTransition: SplashTransition.fadeTransition,
+
+            backgroundColor: Colors.transparent,
+            duration: 1550,
           ),
-          // nextScreen: MainPage(),
-          nextScreen: LoginPage(),
-          splashTransition: SplashTransition.fadeTransition,
-          backgroundColor: Colors.lightGreen,
-          duration: 1550,
         ),
         // locale: DevicePreview.locale(context), // Add the locale here
         // builder: DevicePreview.appBuilder, // Add the builder here
