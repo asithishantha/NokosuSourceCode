@@ -55,7 +55,8 @@ dependencies:
   get: ^4.3.8
   lite_rolling_switch: ^0.1.1
   rounded_loading_button: ^2.0.8
-  
+  liquid_swipe: ^2.1.1
+  rename: ^2.0.1
 
   # flutter_launcher_icons: ^0.9.2
 
@@ -71,7 +72,13 @@ flutter_svg: 0.18.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_name: "^0.0.1"
+
+  flutter_launcher_icons: "^0.9.2"
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/512.png"
 
 
 flutter_launcher_name:
@@ -114,6 +121,16 @@ flutter:
     - assets/emotionally-stable.png
     - assets/cultures.png
     - assets/solid.png
+    - assets/screen3.png
+    - assets/screen2.png
+    - assets/screen1.png
+    - assets/3.jpeg
+    - assets/3trans.png 
+    - assets/screen22.png
+    - assets/ourlogo.png
+    - assets/ourlogo1.png
+    - assets/ourlogo2.png
+    - assets/512.png
 
   fonts:
     - family: Proxima
