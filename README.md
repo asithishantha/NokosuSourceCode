@@ -1,2 +1,2 @@
-# global_flutter
+# NOKOSU
 kj app development
